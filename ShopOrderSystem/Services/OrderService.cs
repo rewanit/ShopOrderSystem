@@ -39,7 +39,7 @@ namespace ShopOrderSystem.Services
             var unavailableProducts = await productRepository.UnavailableProducts(orders);
             if (unavailableProducts.Any()) throw new NotEnoughException(unavailableProducts.Select(x=>x.ProductName));
 
-            var requestedProducts = await productRepository.GetAllAsync(orders.Select(x => x.Key).ToArray());
+            var requestedProducts = await productRepository.GetAllByIdsAsync(orders.Select(x => x.Key).ToArray());
             var requestedProductsDict = requestedProducts.ToDictionary(x => x.ProductId, x => x);
             var orderItems = new List<OrderItem>();
             var orderItemDetails = new List<OrderItemDetail>();

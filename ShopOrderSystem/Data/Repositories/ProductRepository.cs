@@ -43,7 +43,7 @@ namespace ShopOrderSystem.Data.Repositories
             context.Products.UpdateRange(productsToUpdate);
         }
 
-        public async Task<IEnumerable<Product>> GetAllAsync(params int[] ids)
+        public async Task<IEnumerable<Product>> GetAllByIdsAsync(params int[] ids)
         {
             return await context.Products.AsNoTracking().Where(x => ids.Contains(x.ProductId)).ToListAsync();
         }
