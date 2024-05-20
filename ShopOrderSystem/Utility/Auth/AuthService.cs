@@ -17,22 +17,8 @@ namespace ShopOrderSystem.Utility.Auth
                 new User { Username = "User", Password = "User", Role = "User" }
             };
 
-            var user = users.SingleOrDefault(x => x.Username == username && x.Password == password);
+            return await Task.FromResult(users.SingleOrDefault(x => x.Username == username && x.Password == password));
 
-            if (user != null)
-            {
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, user.Username),
-                    new Claim(ClaimTypes.Role, user.Role)
-                };
-
-                var identity = new ClaimsIdentity(claims, "Basic");
-                var principal = new ClaimsPrincipal(identity);
-                return user;
-            }
-
-            return null;
         }
     }
 }
