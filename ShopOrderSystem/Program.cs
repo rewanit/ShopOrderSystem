@@ -42,11 +42,12 @@ namespace ShopOrderSystem
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(options =>
             {
+                // РїРµСЂРµРІРµР» СЃС‚СЂРѕРєСѓ РёР·-Р·Р° СЃР»РѕРјР°РЅРЅРѕР№ РєРѕРґРёСЂРѕРІРєРё
                 options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Title = "Shop Order System API",
                     Version = "v1",
-                    Description = "API для системы заказов магазина"
+                    Description = "API for store ordering system"
                 });
 
                 options.AddSecurityDefinition("Basic", new OpenApiSecurityScheme
